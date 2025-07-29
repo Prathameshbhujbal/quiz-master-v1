@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Score
+{% endblock %}
+
+{% block content %}
+<h1>Scores</h1>
+
+<div class="row row-cols-2">
+    <div class="col-12">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Quiz scores</h5>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Quiz Id</th>
+                            <th>Time stamp of exam</th>
+                            <th>Score</th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+
+                        {% for score in scores %}
+                        <tr>
+                            <td>{{ score.quiz_id }}</td>
+                            <td>{{ score.time_stamp_of_attempt }}</td>
+                            <td>{{ score.total_score }}</td>
+
+                        </tr>
+                        {% else %}
+                        <div class="col-12">
+                            <div class="alert alert-info" role="alert">
+                                No scores found
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </tbody>
+
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}

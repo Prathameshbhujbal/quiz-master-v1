@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+User Dashboard
+{% endblock %}
+
+{% block content %}
+<h1 class="m-3">Welcome {{ user.name }}</h1>
+
+<div class="card text-center">
+    <div class="card-body">
+        <h3 class="card-title">Upcoming Quizzes</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Quiz Name</th>
+                    <th>Quiz date</th>
+                    <th>Quiz duration</th>
+                    <th>Actions</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                {% for quiz in quizzes %}
+                <tr>
+                    <td>{{ quiz.quiz_id }}</td>
+                    <td>{{ quiz.name }}</td>
+                    <td>{{ quiz.date_of_quiz }}</td>
+                    <td>{{ quiz.time_duration }}</td>
+                    <td>
+                        <a href="{{ url_for('view_quiz', quiz_id=quiz.quiz_id, chapter_id=quiz.chapter_id) }}"
+                            class="btn btn-primary">
+                            <i class="fa fa-eye" aria-hidden="true"></i> View </a>
+                        <a href="{{ url_for('start_quiz', quiz_id=quiz.quiz_id) }}" class="btn btn-success"><i
+                                class="fa fa-play"></i>
+                            Start</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+
+
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}

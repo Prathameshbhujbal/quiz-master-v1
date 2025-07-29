@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h1>User list</h1>
+
+{% for user in user_list %}
+<ul class="fs-4">
+    <li>{{ user.username }}</li>
+</ul>
+{% endfor %}
+
+{% endblock %}

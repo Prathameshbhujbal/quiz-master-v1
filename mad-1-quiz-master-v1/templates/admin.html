@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Admin Dashboard
+{% endblock %}
+
+{% block content %}
+<h1 class="m-3">Welcome Admin</h1>
+<a href="{{ url_for('add_subject') }}" class="btn btn-primary btn-lg rounded-circle position-fixed bottom-0 end-0 m-5">
+    <i class="fa-solid fa-plus"></i>
+</a>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 g-4">
+    {% for subject in subjects %}
+    <div class="col">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">{{ subject.name }}</h5>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Chapter Name</th>
+
+                            <th>Actions</th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        {% for chapter in subject.chapters %}
+                        {% if (param == "ch_name" and query.lower() in chapter.name.lower() or (param != "ch_name"))
+                        %}
+                        <tr>
+                            <td>{{ chapter.chapter_id }}</td>
+                            <td>{{ chapter.name }}</td>
+
+                            <td>
+                                <a href="{{ url_for('edit_chapter', chapter_id=chapter.chapter_id) }}"
+                                    class="btn btn-primary">
+                                    <i class="fa-solid fa-pen-to-square"></i> Edit </a>
+                                <a href="{{ url_for('delete_chapter', chapter_id=chapter.chapter_id) }}"
+                                    class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete</a>
+                            </td>
+                        </tr>
+                        {% endif %}
+
+                        {% endfor %}
+                    </tbody>
+
+                </table>
+                <a href="{{ url_for('add_chapter', subject_id=subject.subject_id) }}" class="btn btn-warning"> <i
+                        class="fa-solid fa-plus"></i>
+                    Chapters</a>
+                <a href="{{ url_for('edit_subject', subject_id=subject.subject_id) }}" class="btn btn-primary">
+                    <i class="fa-solid fa-pen-to-square"></i> Edit </a>
+                <a href="{{ url_for('delete_subject', subject_id=subject.subject_id) }}" class="btn btn-danger"><i
+                        class="fa-solid fa-trash"></i> Delete</a>
+
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="col-12">
+        <div class="alert alert-info" role="alert">
+            No subjects found
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+
+
+
+
+{% endblock %}

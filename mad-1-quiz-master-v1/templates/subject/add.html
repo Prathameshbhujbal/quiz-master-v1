@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-2">
+
+    </div>
+    <div class="col-8">
+        <div class="card m-5 p-3">
+            <h1 class="d-flex justify-content-center">New subject</h1>
+
+            <div class="d-flex justify-content-center m-5">
+                <form action="" method="post">
+                    <div class="form-group">
+
+                        <input type="text" class="form-control m-3" name="name" placeholder="Subject Name">
+
+                        <input type="textbox" class="form-control m-3" name="description" placeholder="Description">
+                        <button class="btn btn-primary btn-m m-3">
+                            <i class="fa-solid fa-plus"></i>
+                            Add Subject
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-2">
+
+    </div>
+</div>
+
+
+
+{% endblock %}

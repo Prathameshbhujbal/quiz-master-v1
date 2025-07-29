@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-2">
+
+    </div>
+    <div class="col-8">
+        <div class="card m-5 p-3">
+            <h1 class="d-flex justify-content-center">Edit subject</h1>
+
+            <div class="d-flex justify-content-center m-5">
+                <form action="" method="post">
+                    <div class="form-group">
+
+                        <input type="text" class="form-control m-3" name="name" value="{{ subject.name }}">
+
+                        <input type="textbox" class="form-control m-3" name="description" placeholder=""
+                            value="{{ subject.description }}">
+                        <button class="btn btn-primary btn-m m-3">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            Edit Subject
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-2">
+
+    </div>
+</div>
+
+{% endblock %}

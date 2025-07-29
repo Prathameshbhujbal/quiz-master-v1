@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <!-- render auth links if not logged in, else normal links  -->
+                {% if user %}
+                {% if user.is_admin %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('admin') }}">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('quiz') }}" class="nav-link">Quiz</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{{ url_for('user_list') }}">User list</a>
+                </li>
+                <li>
+                    {% include 'searchbar.html' with context %}
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                </li>
+
+                {% else %}
+                <li class="nav-item">
+                    <a href="{{ url_for('user') }}" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('score') }}" class="nav-link">Scores</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('summary') }}" class="nav-link">Summary</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                </li>
+                {% endif %}
+
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link active" href="{{ url_for('signin') }}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('signup') }}">Sign Up</a>
+                </li>
+
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

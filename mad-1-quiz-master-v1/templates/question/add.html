@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Add Question
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-2">
+
+    </div>
+    <div class="col-8">
+        <div class="card m-5 p-3">
+            <h1 class="d-flex justify-content-center">New Question</h1>
+
+            <div class="d-flex justify-content-center m-5">
+                <form action="" method="post">
+                    <div class="form-group">
+
+
+                        <input type="textbox" class="form-control m-3" name="statement"
+                            placeholder="Question Statement">
+                        <input type="textbox" class="form-control m-3" name="option1" placeholder="Option 1">
+                        <input type="textbox" class="form-control m-3" name="option2" placeholder="Option 2">
+                        <input type="textbox" class="form-control m-3" name="option3" placeholder="Option 3">
+                        <input type="textbox" class="form-control m-3" name="option4" placeholder="Option 4">
+                        <input type="textbox" class="form-control m-3" name="correct_option"
+                            placeholder="Correct Option">
+                        <button class="btn btn-primary btn-m m-3">
+                            <i class="fa-solid fa-plus"></i>
+                            Add Question
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-2">
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Quiz
+{% endblock %}
+
+{% block content %}
+<h1>Quiz Management</h1>
+<a href="{{ url_for('add_quiz') }}" class="btn btn-primary btn-lg rounded-circle position-fixed bottom-0 end-0 m-5">
+    <i class="fa-solid fa-plus"></i>
+</a>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 g-4">
+    {% for quiz in quizzes %}
+    <div class="col">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">{{ quiz.chapter.name }}</h5>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Question ID</th>
+                            <th>Question title</th>
+                            <th>Action</th>
+
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        {% for question in quiz.questions %}
+                        <tr>
+                            <td>{{ question.question_id }}</td>
+                            <td>{{ question.question_statement}}</td>
+                            <td>
+                                <a href="{{ url_for('edit_question', question_id=question.question_id, quiz_id=quiz.quiz_id)}}"
+                                    class="btn btn-primary">
+                                    <i class="fa-solid fa-pen-to-square"></i> Edit </a>
+                                <a href="{{ url_for('delete_question', question_id=question.question_id, quiz_id=quiz.quiz_id)}}"
+                                    class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+
+                </table>
+                <a href="{{ url_for('add_question', quiz_id=quiz.quiz_id) }}" class="btn btn-warning"> <i
+                        class="fa-solid fa-plus"></i>
+                    Question</a>
+                <a href="{{ url_for('edit_quiz', quiz_id=quiz.quiz_id) }}" class="btn btn-primary">
+                    <i class="fa-solid fa-pen-to-square"></i> Edit </a>
+                <a href="{{ url_for('delete_quiz', quiz_id=quiz.quiz_id) }}" class="btn btn-danger"><i
+                        class="fa-solid fa-trash"></i> Delete</a>
+
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="col-12">
+        <div class="alert alert-info" role="alert">
+            No quizzes found
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

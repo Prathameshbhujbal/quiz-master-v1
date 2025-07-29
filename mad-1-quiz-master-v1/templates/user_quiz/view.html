@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Edit quiz
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-2">
+
+    </div>
+    <div class="col-8">
+        <div class="card m-5 p-3">
+            <h1 class="d-flex justify-content-center">View Quiz</h1>
+
+            <div class="d-flex justify-content-center m-5">
+                <table class="table">
+                    <thead>
+                        <th>Quiz ID</th>
+                        <th>Subject</th>
+                        <th>Chapter</th>
+                        <th>No. of questions</th>
+                        <th>Scheduled Date</th>
+                        <th>Duration</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                {{ quiz.quiz_id }}
+                            </td>
+
+                            <td>
+                                {{ subject.name }}
+                            </td>
+
+                            <td>
+                                {{ chapter.name }}
+                            </td>
+
+                            <td>
+                                {{ questions|count }}
+                            </td>
+
+                            <td>
+                                {{ quiz.date_of_quiz }}
+                            </td>
+
+                            <td>
+                                {{ quiz.time_duration }}
+                            </td>
+                        </tr>
+
+
+
+
+
+                    </tbody>
+
+                </table>
+
+
+            </div>
+
+        </div>
+    </div>
+    <div class="col-2">
+        <a href="{{ url_for('user') }}" class="btn btn-danger btn-m m-3">
+            <i class="fa fa-window-close" aria-hidden="true"></i>
+            Close
+        </a>
+    </div>
+</div>
+{% endblock %}
